@@ -11,7 +11,7 @@ def splitter(keywords):
 
 def text_reader():
 
-    path = r'PATH TO...'
+    path = r'C:\Users\APA\Desktop'
     for filename in glob.glob(os.path.join(path, '*.txt')):
         with open(os.path.join(os.getcwd(), filename), 'r') as f: 
             print('1')
@@ -31,5 +31,7 @@ def clean_text(text):
     result  = [word for word in re.split("\W+",text) if word.lower() not in stopwords]
     result = (' ').join(result)
     return result
+
+    
 search_for = input("What words are you looking for ? :")
 splitter(search_for)
