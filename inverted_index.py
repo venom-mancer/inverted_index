@@ -11,7 +11,7 @@ def splitter(keywords):
 
 def text_reader():
 
-    path = r'C:\Users\APA\Desktop'
+    path = r'PATH TO...'
     for filename in glob.glob(os.path.join(path, '*.txt')):
         with open(os.path.join(os.getcwd(), filename), 'r') as f: 
             print('1')
