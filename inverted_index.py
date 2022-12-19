@@ -11,10 +11,12 @@ def splitter(keywords):
 
 def text_reader():
 
-    path = r'C:\Users\APA\Desktop'
+    path = r'C:\Users\APA\Desktop\texts'
     for filename in glob.glob(os.path.join(path, '*.txt')):
-        with open(os.path.join(os.getcwd(), filename), 'r') as f: 
-            print('1')
+        with open(os.path.join(os.getcwd(), filename), 'r') as file:
+            read_file = file.read()
+            text_file = clean_text(read_file)
+            print(text_file)
 
     
 
@@ -28,10 +30,11 @@ def clean_text(text):
         'Might','Mine','Must','My','Mine','Must','My','Neither','Nor','Not','Of','Oh','Ok','When','Where','Whereas','Wherever','Whenever','Whether',
         'Which','While','Who','Whom','Whoever','Whose','Will' ,'With' ,'Within' ,'Without' ,'Would' ,'Yes' ,'Yet' ,'You' ,'Your',
     }
-    result  = [word for word in re.split("\W+",text) if word.lower() not in stopwords]
-    result = (' ').join(result)
-    return result
+    remover = '|'.join(stopwords)
+    result = re.compile(r'\b\W+('+remover+r')\b', flags=re.IGNORECASE)
+    out = result.sub("", text)
+    return out
 
-    
+
 search_for = input("What words are you looking for ? :")
 splitter(search_for)
